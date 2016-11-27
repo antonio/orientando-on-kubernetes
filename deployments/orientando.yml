@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: orientando
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: orientando
+    spec:
+      containers:
+      - name: orientando
+        image: orientando
+        env:
+          - name: ORIENTANDO_SECRET_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: orientando
+                key: secret-token
+          - name: ORIENTANDO_AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: orientando
+                key: aws-access-key-id
+          - name: ORIENTANDO_AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: orientando
+                key: aws-secret-access-key
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: IfNotPresent
