@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: orientando
-        image: orientando
+        image: orientando:v4
         env:
           - name: ORIENTANDO_SECRET_TOKEN
             valueFrom:
