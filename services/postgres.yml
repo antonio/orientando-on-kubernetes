@@ -5,6 +5,7 @@ metadata:
   labels:
     run: postgres
 spec:
+  type: NodePort
   ports:
   - port: 5432
     protocol: TCP
